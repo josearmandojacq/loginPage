@@ -10,6 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const db = 'mongodb://localhost:27017/newDatabase';
 const mongoose = require('mongoose');
+const cool = require('cool-ascii-faces');
 
 mongoose.Promise = global.Promise;
 mongoose.connection.openUri(db);
@@ -74,6 +75,12 @@ app.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
+
+
+// Use cool-ascii-faces
+app.get('/cool', (request, response)=>{
+  response.send(cool());
+})
 
 
 
