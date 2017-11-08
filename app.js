@@ -8,7 +8,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-const db = 'mongodb://localhost:27017/newDatabase';
+const db = process.env.MLAB_DB_URL || 'mongodb://localhost:27017/newDatabase';
 const mongoose = require('mongoose');
 const cool = require('cool-ascii-faces');
 
