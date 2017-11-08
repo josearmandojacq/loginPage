@@ -11,7 +11,9 @@ router.get('/',ensureAuthenticated , (request, response)=>{
 function ensureAuthenticated(request, response, next){
     if (request.isAuthenticated()) {
         return next();
-    }else{
+    }else if(request.path === '/'){
+        response.redirect('/users/login');
+    }else {
         request.flash('error_msg', 'You are not logged in');
         response.redirect('/users/login');
     }
